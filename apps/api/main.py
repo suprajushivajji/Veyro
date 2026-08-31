@@ -48,6 +48,20 @@ async def add_request_id(request: Request, call_next):
     return response
 
 
+@app.get("/")
+def root() -> JSONResponse:
+    return JSONResponse(
+        {
+            "message": "RecoverOS API",
+            "version": app.version,
+            "endpoints": {
+                "health": "/api/health",
+                "events_stats": "/api/events/stats",
+            },
+        }
+    )
+
+
 @app.get("/api/health")
 def health() -> JSONResponse:
     events = _load_records("revenue_events.json")
