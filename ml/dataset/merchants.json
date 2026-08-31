@@ -1,0 +1,26 @@
+[
+  {
+    "id": "merchant_ecommerce_001",
+    "name": "ShopKart India",
+    "business_type": "ecommerce",
+    "industry": "retail",
+    "created_at": "2024-06-21T00:00:00+00:00",
+    "is_active": true
+  },
+  {
+    "id": "merchant_saas_002",
+    "name": "CloudSync Pro",
+    "business_type": "saas",
+    "industry": "technology",
+    "created_at": "2023-02-08T00:00:00+00:00",
+    "is_active": true
+  },
+  {
+    "id": "merchant_services_003",
+    "name": "UrbanServe",
+    "business_type": "services",
+    "industry": "home_services",
+    "created_at": "2023-05-06T00:00:00+00:00",
+    "is_active": true
+  }
+]
