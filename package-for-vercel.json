@@ -1,0 +1,16 @@
+{
+  "name": "veyro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cd apps/web && npm run build",
+    "dev": "cd apps/web && npm run dev",
+    "start": "cd apps/web && npm start"
+  },
+  "dependencies": {
+    "next": "^14.2.5"
+  },
+  "workspaces": [
+    "apps/web"
+  ]
+}
