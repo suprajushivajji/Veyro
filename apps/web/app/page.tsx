@@ -62,6 +62,12 @@ export default function Home() {
     const fetchData = async () => {
       try {
         setError(null)
+        
+        // Log API URL for debugging
+        console.log('API_URL:', API_URL)
+        if (!API_URL) {
+          throw new Error('API_URL environment variable not set. Please configure NEXT_PUBLIC_API_URL in Vercel.')
+        }
         const [healthRes, dashboardRes, eventMixRes, paymentMethodsRes, signalsRes] = await Promise.all([
           fetch(`${API_URL}/api/health`),
           fetch(`${API_URL}/api/dashboard`),
