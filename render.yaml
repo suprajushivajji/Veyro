@@ -2,7 +2,7 @@ services:
   - type: web
     name: recoveros-backend
     runtime: python
-    runtimeVersion: 3.10.13
+    runtimeVersion: 3.12.0
     buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements-prod.txt
     startCommand: uvicorn apps.api.main:app --host 0.0.0.0 --port 8000
     envVars:
