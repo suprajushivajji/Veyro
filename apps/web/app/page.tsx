@@ -56,7 +56,7 @@ export default function Home() {
   const [loadingState, setLoadingState] = useState<LoadingState>('loading')
   const [error, setError] = useState<string | null>(null)
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
   useEffect(() => {
     const fetchData = async () => {
