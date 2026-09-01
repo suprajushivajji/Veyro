@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from sqlalchemy import text
-from apps.api.database import get_engine, get_db_session, Base
+from apps.api.database import get_engine, get_db_session_context
 from apps.api.models.tables import (
     Merchant, Customer, Order, RevenueEvent, BusinessPolicy,
     EventType, PaymentMethod,
@@ -200,7 +200,7 @@ def main():
     print(f"  Loaded {len(merchants_data)} merchants, {len(customers_data):,} customers,")
     print(f"         {len(orders_data):,} orders, {len(events_data):,} events\n")
 
-    with get_db_session() as session:
+    with get_db_session_context() as session:
         # Truncate for idempotency
         truncate_tables(session)
 

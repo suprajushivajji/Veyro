@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'RecoverOS - AI Revenue Recovery',
+  title: 'Veyro - AI Revenue Recovery',
   description: 'AI Revenue Recovery Portfolio Optimizer',
 }
 

@@ -14,12 +14,13 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
 load_dotenv()
 
-from apps.api.database import get_engine, Base
+from apps.api.database import get_engine
 from apps.api.models.tables import (  # noqa: F401 — import to register models
     Merchant, Customer, Order, RevenueEvent,
     RecoveryOpportunity, RecoveryPrediction, RecoveryDecision,
     RecoveryAction, ActionAttempt, RecoveryOutcome,
     ControlGroup, AuditEvent, BusinessPolicy,
+    BaseORM as Base,
 )
 
 
