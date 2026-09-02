@@ -212,6 +212,10 @@ button {
   gap: 16px;
 }
 
+section[id] {
+  scroll-margin-top: 28px;
+}
+
 .panel {
   border-radius: 24px;
   padding: 22px;

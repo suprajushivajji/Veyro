@@ -52,6 +52,14 @@ const paymentPalette: Record<string, string> = {
   default: '#64748b',
 }
 
+const navigationItems = [
+  { label: 'Overview', target: 'overview' },
+  { label: 'Recovery Map', target: 'map' },
+  { label: 'Signals', target: 'signals' },
+  { label: 'Allocation', target: 'allocation' },
+  { label: 'Audit', target: 'audit' },
+]
+
 export default function Home() {
   const [dashboard, setDashboard] = useState<DashboardData | null>(null)
   const [eventMix, setEventMix] = useState<EventMixData | null>(null)
@@ -62,8 +70,14 @@ export default function Home() {
   const [allocation, setAllocation] = useState(300)
   const [selectedEventType, setSelectedEventType] = useState<string | null>(null)
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
+  const [activeSection, setActiveSection] = useState('overview')
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
+
+  const goToSection = (target: string) => {
+    document.getElementById(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setActiveSection(target)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -181,9 +195,9 @@ export default function Home() {
               </div>
             </div>
             <nav className="nav">
-              {['Overview', 'Recovery Map', 'Signals', 'Allocation', 'Audit'].map((item) => (
-                <button key={item} className="nav-item muted" type="button">
-                  {item}
+              {navigationItems.map((item) => (
+                <button key={item.target} className="nav-item muted" type="button">
+                  {item.label}
                 </button>
               ))}
             </nav>
@@ -240,13 +254,15 @@ export default function Home() {
           </div>
 
           <nav className="nav" aria-label="Main navigation">
-            {['Overview', 'Recovery Map', 'Signals', 'Allocation', 'Audit'].map((item, idx) => (
+            {navigationItems.map((item) => (
               <button
-                key={item}
+                key={item.target}
                 type="button"
-                className={`nav-item ${idx === 0 ? 'active' : 'muted'}`}
+                className={`nav-item ${activeSection === item.target ? 'active' : 'muted'}`}
+                aria-current={activeSection === item.target ? 'page' : undefined}
+                onClick={() => goToSection(item.target)}
               >
-                {item}
+                {item.label}
               </button>
             ))}
           </nav>
@@ -268,7 +284,7 @@ export default function Home() {
           </header>
 
           <div className="content-stack">
-            <section className="hero panel">
+            <section id="overview" className="hero panel">
               <div className="hero-copy">
                 <p className="eyebrow">Revenue at risk</p>
                 <h1>{formatMoneyShort(totalRiskExposure)}</h1>
@@ -291,7 +307,7 @@ export default function Home() {
 
                 <div className="cta-row">
                   <a href="#map" className="primary-button">Explore recovery opportunities →</a>
-                  <button type="button" className="secondary-button">View signals</button>
+                  <button type="button" className="secondary-button" onClick={() => goToSection('signals')}>View signals</button>
                 </div>
               </div>
 
@@ -372,7 +388,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="two-panel-grid">
+            <section id="signals" className="two-panel-grid">
               <div className="panel payment-panel">
                 <div className="section-header compact">
                   <div>
@@ -450,7 +466,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="panel simulator-panel">
+            <section id="allocation" className="panel simulator-panel">
               <div className="section-header compact">
                 <div>
                   <p className="eyebrow">Allocation</p>
@@ -525,7 +541,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="panel principles-panel">
+            <section id="audit" className="panel principles-panel">
               <div className="section-header compact">
                 <div>
                   <p className="eyebrow">Why VEYRO</p>
