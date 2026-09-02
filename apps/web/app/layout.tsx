@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Veyro - AI Revenue Recovery',
-  description: 'AI Revenue Recovery Portfolio Optimizer',
+  title: 'VEYRO — AI Revenue Recovery Intelligence',
+  description: 'Find the revenue worth recovering.',
 }
 
 export default function RootLayout({
